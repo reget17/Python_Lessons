@@ -16,6 +16,8 @@ def bubble(point, step):
         sd.circle(point, radius, width=1)
 
 
+# test
+
 # Нарисовать 10 пузырьков в ряд
 
 # Нарисовать три ряда по 10 пузырьков
