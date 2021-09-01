@@ -11,11 +11,11 @@
 
 educational_grant, expenses = 10000, 12000
 
-months = 1
+months_count = 1
 debt = expenses - educational_grant
 
-while months < 10:
-    months += 1
+while months_count < 10:
+    months_count += 1
     expenses = round((expenses * 1.03), 0)
     debt += expenses - educational_grant
     print(debt)
