@@ -11,4 +11,13 @@
 
 educational_grant, expenses = 10000, 12000
 
-# TODO здесь ваш код
+months = 1
+debt = expenses - educational_grant
+
+while months < 10:
+    months += 1
+    expenses = round((expenses * 1.03), 0)
+    debt += expenses - educational_grant
+    print(debt)
+    print('Расходы ', expenses, 'Общий долг ', debt)
+print('Студенту нужно попросить ', debt, ' руб.')
