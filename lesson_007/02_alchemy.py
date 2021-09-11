@@ -19,7 +19,67 @@
 #   print(Water(), '+', Air(), '=', Water() + Air())
 #   print(Fire(), '+', Air(), '=', Fire() + Air())
 
-# TODO здесь ваш код
+
+class Water:
+
+    def __add__(self, other):
+        if type(other) == Air:
+            return Storm()
+        elif type(other) == Fire:
+            return Vapor()
+        elif type(other) == Earth:
+            return Dirt()
+
+    def __str__(self):
+        return 'Вода'
+
+
+class Air:
+
+    def __add__(self, other):
+        if type(other) == Fire:
+            return Lightning()
+        elif type(other) == Earth:
+            return Lava()
+
+    def __str__(self):
+        return 'Воздух'
+
+class Fire:
+    def __str__(self):
+        return 'Огонь'
+
+class Earth:
+    def __str__(self):
+        return 'Земля'
+
+class Storm:
+
+    def __str__(self):
+        return 'Шторм'
+
+class Vapor:
+    def __str__(self):
+        return 'Пар'
+
+class Dirt:
+    def __str__(self):
+        return 'Грязь'
+
+class Lightning:
+    def __str__(self):
+        return 'Молния'
+
+class Dust:
+    def __str__(self):
+        return 'Пыль'
+
+class Lava:
+    def __str__(self):
+        return 'Лава'
+
+
+print(Air(), '+', Earth(), '=', Air() + Earth())
 
 # Усложненное задание (делать по желанию)
 # Добавить еще элемент в игру.
