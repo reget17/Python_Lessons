@@ -77,7 +77,7 @@ class BookStat:
         print(f"|{'Буква':^14}|{'Частота':^15}|")
         print(f"+{'+':-^30}+")
         for summ, char in sorted_item:
-            print(f'|{char:^14}|{summ:^15}|')
+            print(f'|{char: ^14}|{summ: ^15}|')
         print(f"+{'+':-^30}+")
         print(f"|{'Итого':^14}|{self.char_count:^15}|")
         print(f"+{'+':-^30}+")
