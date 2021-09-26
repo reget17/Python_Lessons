@@ -34,7 +34,42 @@ import os, time, shutil
 # Чтение документации/гугла по функциям - приветствуется. Как и поиск альтернативных вариантов :)
 # Требования к коду: он должен быть готовым к расширению функциональности. Делать сразу на классах.
 
-# TODO здесь ваш код
+import zipfile
+
+
+class FileMover:
+
+    def __init__(self, import_folder, out_folder):
+        self.import_folder = import_folder
+        self.out_folder = out_folder
+
+    def unzip(self):
+        zfile = zipfile.ZipFile(self.import_folder, 'r')
+        for filename in zfile.namelist():
+            zfile.extract(filename)
+
+
+    def get_files(self):
+
+        for dirpath, dirnames, filenames in os.walk(self.import_folder):
+            for file in filenames:
+                full_file_path = os.path.join(dirpath, file)
+                secs = os.path.getmtime(full_file_path)
+                file_time = time.gmtime(secs)
+                create_year = file_time[0]
+                create_month = file_time[1] if len(str(file_time[1])) == 2 else '0' + str(file_time[1])  # двузначный формат
+                output_path = os.path.join(self.out_folder, str(create_year), str(create_month))
+
+                if not os.path.exists(output_path):
+                    os.makedirs(output_path)
+                shutil.copy2(full_file_path, output_path)
+
+
+import_folder = 'icons'
+out_folder = 'icons_by_year'
+file_mover = FileMover(import_folder=import_folder, out_folder=out_folder)
+# file_mover.unzip()
+file_mover.get_files()
 
 # Усложненное задание (делать по желанию)
 # Нужно обрабатывать zip-файл, содержащий фотографии, без предварительного извлечения файлов в папку.
